@@ -67,7 +67,7 @@ class Rate(models.Model):
     author = models.ForeignKey(User, null=True, on_delete=CASCADE)
 
     def __str__(self):
-        return self.project
+        return str(self.project)
 
     def saveRating(self):
       self.save()

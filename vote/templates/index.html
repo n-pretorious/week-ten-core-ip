@@ -30,7 +30,7 @@
           </section>
         </section>
         {% for project in projects %}
-        <section class="col-md-3 col-sm-6 item mt-4">
+        <section class="col-md-3 col-sm-6 item mt-4 project">
           <a href="{% url 'rate' project.id %}">
             <section class="card item-card card-block">
               <h4 class="card-title text-center pt-2 pb-2 bg-dark text-white"><i class="material-icons">{{ project.title }}</i></h4>

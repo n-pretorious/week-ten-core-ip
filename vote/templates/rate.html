@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% load static %} {% block content %} {{block.super}} {% block styles %} {% bootstrap_css %}
+<script src="https://kit.fontawesome.com/7b7df4a8c9.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/rate.css' %}" />
+{% endblock %}
+<section class="wrapper">
+  <div class="container-fostrap">
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-7 col-sm-offset-3">
+            <div class="card">
+              <div class="img-card">
+                <img class="img-fluid" src="{{ project.image.url }}" />
+              </div>
+              <div class="card-content">
+                <h4 class="card-title text-center">
+                  {{ project.title }}
+                </h4>
+                <p class="">
+                  {{ project.description }}
+                </p>
+                <p class="">
+                  <span class="text-secondary">View the project </span><i class="fas fa-hand-point-right"></i><a href="{{ project.link }}" target="_blank"><span class="card-text"> here</span></a>
+                </p>
+              </div>
+              <div class="card-rate bg-dark">
+                <button type="button" class="btn btn-secondary btn-lg btn-block">
+                  Rate
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-5 col-sm-offset-3">
+            <div class="card text-center">
+              <div class="card-header">
+                Rating scores
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">Design</h4>
+                <p class="card-text">.card-text</p>
+                <a href="#" class="btn btn-primary">.btn-primary</a>
+
+                <h4 class="card-title">Usability</h4>
+                <p class="card-text">.card-text</p>
+                <a href="#" class="btn btn-primary">.btn-primary</a>
+
+                <h4 class="card-title">Content</h4>
+                <p class="card-text">.card-text</p>
+                <a href="#" class="btn btn-primary">.btn-primary</a>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}

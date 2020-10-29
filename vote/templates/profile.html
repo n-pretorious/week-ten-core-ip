@@ -1,49 +1,41 @@
-{% extends 'base.html' %}
-{% load bootstrap4 %}
-{% load static %}
-{% block content %} 
-{{block.super}}
-{% block styles %}
-    {% bootstrap_css %}
-    <script src="https://kit.fontawesome.com/7b7df4a8c9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% extends 'base.html' %} {% load bootstrap4 %} {% load static %} {% block content %} {{block.super}} {% block styles %} {% bootstrap_css %}
+<script src="https://kit.fontawesome.com/7b7df4a8c9.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 {% endblock %}
 <section class="row py-5 px-4">
-    <section class="col-xl-4 col-md-6 col-sm-10 mx-auto">
+  <section class="col-xl-4 col-md-6 col-sm-10 mx-auto">
+    <!-- Profile widget -->
+    <section class="bg-white shadow rounded overflow-hidden">
+      <section class="px-4 pt-0 pb-4 bg-dark">
+        <section class="media align-items-end profile-header">
+          <section class="profile mr-3"><img src="{{ profile.photo.url }}" alt="..." width="130" class="rounded mb-2 img-thumbnail" /><a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a></section>
+          <section class="media-body mb-5 text-white">
+            <h4 class="mt-0 mb-0">{{ profile.name }}</h4>
+            <p class="small mb-4"><i class="fas fa-map-marker mr-2"></i>{{ profile.country }}</p>
+          </section>
+        </section>
+      </section>
 
-        <!-- Profile widget -->
-          <section class="bg-white shadow rounded overflow-hidden">
-              <section class="px-4 pt-0 pb-4 bg-dark">
-                  <section class="media align-items-end profile-header">
-                      <section class="profile mr-3">
-                        <img src="{{ profile.photo.url }}" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a>
-                      </section>
-                      <section class="media-body mb-5 text-white">
-                          <h4 class="mt-0 mb-0">{{ profile.name }}</h4>
-                          <p class="small mb-4"> <i class="fas fa-map-marker mr-2"></i>{{ profile.country }}</p>
-                      </section>
-                  </section>
-              </section>
+      <section class="bg-light p-4 d-flex justify-content-end text-center">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block">{{ noOfProjects }}</h5>
+            <small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Projects</small>
+          </li>
+        </ul>
+      </section>
 
-              <section class="bg-light p-4 d-flex justify-content-end text-center">
-                  <ul class="list-inline mb-0">
-                      <li class="list-inline-item">
-                          <h5 class="font-weight-bold mb-0 d-block">{{ noOfProjects }}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Projects</small>
-                      </li>
-                  </ul>
-              </section>
-
-              <section class="py-4 px-4">
-                  <section class="d-flex align-items-center justify-content-between mb-3">
-                      <h5 class="mb-0">Top projects</h5>
-                      <a href="#" class="btn btn-link text-muted">Show all</a>
-                  </section>
-                  <section class="row">
-                      {% for project in projects %}
-                      <section class="col-lg-6 mb-2 pr-lg-1"><img src="{{ project.image.url }}" alt="" class="img-fluid rounded shadow-sm"></section>
-                      {% endfor %}
-                  </section>
-                  <!-- <section class="py-4">
+      <section class="py-4 px-4">
+        <section class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="mb-0">Top projects</h5>
+          <a href="{% url 'profileProjects' %}" class="btn btn-link text-muted">Show all</a>
+        </section>
+        <section class="row">
+          {% for project in projects %}
+          <section class="col-lg-6 mb-2 pr-lg-1"><img src="{{ project.image.url }}" alt="" class="img-fluid rounded shadow-sm" /></section>
+          {% endfor %}
+        </section>
+        <!-- <section class="py-4">
                       <h5 class="mb-3">Recent posts</h5>
                       <section class="p-4 bg-light rounded shadow-sm">
                           <p class="font-italic mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
@@ -53,8 +45,9 @@
                           </ul>
                       </section>
                   </section> -->
-              </section>
-          </section><!-- End profile widget -->
+      </section>
     </section>
+    <!-- End profile widget -->
+  </section>
 </section>
 {% endblock %}

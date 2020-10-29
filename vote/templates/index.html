@@ -1,108 +1,49 @@
-{%extends 'base.html'%} {% block content %} {{block.super}}
-<header>
-  <section class="container">
-    <h1 class="text-center">What do people say about your project?</h1>
-  </section>
-  <!-- End of container -->
-</header>
+{%extends 'base.html'%} {% block content %} {% load static %} {{block.super}} {% block styles %}
+<script src="https://kit.fontawesome.com/7b7df4a8c9.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock %}
 
 <main>
   <section class="container">
+    <!-- Slider main container -->
+    <section class="swiper-container main-slider" id="myCarousel">
+      <section class="swiper-wrapper">
+        <section class="swiper-slide slider-bg-position" style="background: url('https://res.cloudinary.com/preto/image/upload/v1603793560/lnmrqfkj681vhm6nv58i.png');" data-hash="slide1">
+          <h2>Instaclone</h2>
+        </section>
+
+        <!--<section class="swiper-slide slider-bg-position" style="background: url('https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_960_720.jpg');" data-hash="slide2">
+          <h2>Project fitness X</h2>
+        </section> -->
+      </section>
+      <!-- Add Pagination -->
+      <section class="swiper-pagination"></section>
+      <!-- Add Navigation -->
+      <section class="swiper-button-prev"><i class="fa fa-chevron-left"></i></section>
+      <section class="swiper-button-next"><i class="fa fa-chevron-right"></i></section>
+    </section>
     <section class="container mt-2">
-      <!--   <section class="card card-block mb-2">
-    <h4 class="card-title">Card 1</h4>
-    <p class="card-text">Welcom to bootstrap card styles</p>
-    <a href="#" class="btn btn-primary">Submit</a>
-  </section>   -->
       <section class="row">
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
+        <section class="col-md-12">
+          <section class="heading">
+            <h2>Recently Added projects</h2>
           </section>
         </section>
+        {% for project in projects %}
         <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
+          <a href="{% url 'rate' project.id %}">
+            <section class="card item-card card-block">
+              <h4 class="card-title text-center pt-2 pb-2 bg-dark text-white"><i class="material-icons">{{ project.title }}</i></h4>
+              <img src="{{ project.image.url }}" alt="Project image" />
 
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
+              <section class="px-2 mb-2">
+                <h5 class="card-title mt-3 mb-3 text-secondary text-center font-weight-normal"><u>Description</u></h5>
+                <p class="card-text">{{ project.description }}</p>
+              </section>
             </section>
-          </section>
+          </a>
         </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
-        <section class="col-md-3 col-sm-6 item mt-4">
-          <section class="card item-card card-block">
-            <h4 class="card-title text-center pt-2"><i class="material-icons">Project name</i></h4>
-            <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset" />
-
-            <section class="px-2 mb-2">
-                        <h5 class="card-title mt-3 mb-3 text-truncate">Project moto sana</h5>
-            <p class="card-text">This is a project that beats all other projects. You better give it the best rating.</p>
-            </section>
-          </section>
-        </section>
+        {% endfor %}
       </section>
     </section>
   </section>

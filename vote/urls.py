@@ -7,4 +7,6 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('profile/projects', views.projects, name='profileProjects'),
     path('project/<int:id>', views.rate, name='rate'),
+    path('api/profiles/', views.ProfileList.as_view()),
+    path('api/projects/', views.ProjectList.as_view())
 ]

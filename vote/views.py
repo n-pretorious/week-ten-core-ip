@@ -1,13 +1,10 @@
-from django.contrib.auth.models import User
-from django.http import request
-from django.http.response import Http404, HttpResponse
+from django.http.response import Http404
 from rest_framework.response import Response
-
-# from rest_framework.views import APIView
-# from .serializer import ProfileSerializer
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer, ProjectSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from awards.settings import LOGOUT_REDIRECT_URL
-from vote.models import Profile, Project
+from vote.models import Profile, Project, Rate
 from django.shortcuts import render
 from django.contrib.auth import logout
 
@@ -63,9 +60,31 @@ def projects(request):
 
 def rate(request, id):
   project = Project.objects.get(id=id)
+  # rating = Rate.objects.get(project=project)
+  
+  design = request.POST.get('design')
+  usability = request.POST.get('usability')
+  content = request.POST.get('content')
+  
+  scores = Rate(project = project, design = design, usability = usability, content = content, author = request.user)
+  
+  scores.save()
   
   context = {
-    'project' : project
+    'project' : project,
+    # 'rating' : rating
   }
 
   return render(request, 'rate.html', context)
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        allProfiles = Profile.objects.all()
+        serializers = ProfileSerializer(allProfiles, many=True)
+        return Response(serializers.data)
+      
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        allProjects = Project.objects.all()
+        serializers = ProjectSerializer(allProjects, many=True)
+        return Response(serializers.data)

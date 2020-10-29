@@ -15,6 +15,7 @@ from pathlib import Path
 from decouple import config, Csv
 import cloudinary
 import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -68,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'awards.urls'
@@ -152,3 +154,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Redirect after login and logout
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())

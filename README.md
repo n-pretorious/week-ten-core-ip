@@ -4,14 +4,13 @@ This is an awarding site. A user gets to grade projects posted.
 
 ## Core Features
 
-* An admin can upload new profiles, photos and comments through an admin panel
+* An admin can upload new profiles, projects and rates through an admin panel
 * An admin can update the said above model details
 * A user can register and setup a profile
 * A user can view their profile to see their information
-* A user can search for other users
-* A user can follow and unfollow other users
-* A user can view images of people they have followed on their timeline
-* A user can view a post's details
+* A user can see projects posted to be graded
+* A user can post their projects
+* A user can grade other projects
 
 ## Prerequisites
 

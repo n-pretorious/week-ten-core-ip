@@ -6,15 +6,17 @@
     <section class="row">
       {% for project in projects %}
       <section class="col-md-3 col-sm-6 item mt-4">
-        <section class="card item-card card-block">
-          <h4 class="card-title text-center pt-2 pb-2 bg-dark text-white"><i class="material-icons">{{ project.title }}</i></h4>
-          <img src="{{ project.image.url }}" alt="Photo of sunset" />
+        <a href="{% url 'rate' project.id %}">
+          <section class="card item-card card-block">
+            <h4 class="card-title text-center pt-2 pb-2 bg-dark text-white"><i class="material-icons">{{ project.title }}</i></h4>
+            <img src="{{ project.image.url }}" alt="Photo of sunset" />
 
-          <section class="px-2 mb-2">
-            <h5 class="card-title mt-3 mb-3 text-secondary text-center font-weight-normal"><u>Description</u></h5>
-            <p class="card-text">{{ project.description }}</p>
+            <section class="px-2 mb-2">
+              <h5 class="card-title mt-3 mb-3 text-secondary text-center font-weight-normal"><u>Description</u></h5>
+              <p class="card-text">{{ project.description }}</p>
+            </section>
           </section>
-        </section>
+        </a>
       </section>
       {% endfor %}
     </section>

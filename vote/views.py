@@ -57,10 +57,7 @@ def projects(request):
 def rate(request, id):
   project = Project.objects.get(id=id)
   rating = Rate.objects.filter(project=project)
-  # print(rating)
-  
-  # check if post request has been made
-  # pick values
+
   if request.method == "POST":
   
     design = request.POST.get('design')
@@ -73,7 +70,7 @@ def rate(request, id):
   
   context = {
     'project' : project,
-    # 'rating' : rating
+    'rating' : rating
   }
 
   return render(request, 'rate.html', context)

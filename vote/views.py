@@ -32,12 +32,8 @@ def rate(request):
 def profile(request):
     try:
         profile = Profile.objects.get(user=request.user)
-    except ObjectDoesNotExist:
-        raise Http404()
-
-    try:
         # remember to query and return projects for a particular user
-        projects = Project.objects.all()
+        projects = Project.objects.filter(profile=request.user)
         noOfProjects = projects.count()
     except ObjectDoesNotExist:
         raise Http404()
@@ -60,15 +56,20 @@ def projects(request):
 
 def rate(request, id):
   project = Project.objects.get(id=id)
-  # rating = Rate.objects.get(project=project)
+  rating = Rate.objects.filter(project=project)
+  # print(rating)
   
-  design = request.POST.get('design')
-  usability = request.POST.get('usability')
-  content = request.POST.get('content')
+  # check if post request has been made
+  # pick values
+  if request.method == "POST":
   
-  scores = Rate(project = project, design = design, usability = usability, content = content, author = request.user)
-  
-  scores.save()
+    design = request.POST.get('design')
+    usability = request.POST.get('usability')
+    content = request.POST.get('content')
+    
+    scores = Rate(project = project, design = design, usability = usability, content = content, author = request.user)
+    
+    scores.save()
   
   context = {
     'project' : project,
